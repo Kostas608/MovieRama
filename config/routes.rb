@@ -12,26 +12,19 @@ Rails.application.routes.draw do
 
   match 'users_show/:id' => 'users_show#show', via: :get
   match 'users_show_liked/:id' => 'users_show#show_liked', via: :get
-  match 'users' => 'movies#index', via: :all
-
-  match 'users/*' => 'movies#index', via: :all
+ 
 
   get 'about' => 'pages#about'
 
   devise_for :users
-   match 'users' => 'movies#index', via: :all
+ 
 
-  match 'users/*' => 'movies#index', via: :all
-
-  # get    '/help',    to: 'static_pages#help'
-  # get    '/about',   to: 'static_pages#about'
-  # get    '/contact', to: 'static_pages#contact'
-  # get    '/signup',  to: 'users#new'
-  # get    '/login',   to: 'sessions#new'
   post   '/like',   to: 'likes#create'
   delete '/like',  to: 'likes#destroy'
-  #resources :users 
-  match '*path' => 'movies#index', via: :all
+  match 'users' => 'errors#index', via: :all
+
+  match 'users/*' => 'errors#index', via: :all
+  match '*path' => 'errors#index', via: :all
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -49,20 +49,20 @@ class UsersShowController < ApplicationController
 
 
 
-            @movies = @movies_buffer.sort_by {|obj| obj.created_at}
+            @movies = @movies_buffer.sort_by {|obj| obj.created_at}.reverse!
             respond_to do |format|
             format.html
             format.json { render json: @movies }
             end
         elsif params[:search_by]=="Number_of_likes"
               
-              @movies = @movies_buffer.sort_by {|obj| obj.number_of_likes}
+              @movies = @movies_buffer.sort_by {|obj| obj.number_of_likes}.reverse!
               respond_to do |format|
               format.html
               format.json { render json: @movies }
               end
           elsif params[:search_by]=="Number_of_hates"
-              @movies = @movies_buffer.sort_by {|obj| obj.number_of_hates}
+              @movies = @movies_buffer.sort_by {|obj| obj.number_of_hates}.reverse!
               respond_to do |format|
               format.html
               format.json { render json: @movies }
