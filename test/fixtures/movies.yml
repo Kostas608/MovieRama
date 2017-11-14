@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Title: MyString
+  Description: MyText
+  Username: MyString
+  Publication_date: 2017-11-10 16:00:28
+  Number_of_likes: 1
+  Number_of_hates: 1
+
+two:
+  Title: MyString
+  Description: MyText
+  Username: MyString
+  Publication_date: 2017-11-10 16:00:28
+  Number_of_likes: 1
+  Number_of_hates: 1

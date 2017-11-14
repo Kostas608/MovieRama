@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MovieRama</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	
+
+	<nav class="navbar navbar-inverse">
+  	<div class="container-fluid">
+    	<div class="navbar-header">
+     	 <a class="navbar-brand" href="/movies">MovieRama</a>
+    </div>
+    <!-- <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+    </ul> -->
+    <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to "About", about_path,  :class => 'glyphicon glyphicon-info-sign' %></li>
+
+    	<% if user_signed_in? %>
+    		<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => 'glyphicon glyphicon-user' %></li>
+    	<% else %>
+    	<li><%= link_to "Sign up", new_user_registration_path, :class => 'glyphicon glyphicon-user' %></li>
+    	<li><%= link_to "Log in", new_user_session_path,  :class => 'glyphicon glyphicon-user' %></li>
+    	 	
+         <% end %>
+     
+    </ul>
+  </div>
+</nav>
+
+<% if alert %>
+  <p class="alert alert-danger" ><%= alert %></p>
+<% end %>
+<%= yield %>
+
+</body>
+
+</html>

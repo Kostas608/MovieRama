@@ -1,0 +1,65 @@
+<div class="container" style="margin-left:20 px">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @movie.Title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @movie.Description %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%=link_to @movie.Username, :controller => :users_show, :action => :show,:id => @movie.user_id%>
+</p>
+
+<p>
+  <strong>Publication date:</strong>
+  <%if (Time.now - @movie.created_at.to_time)>1.day%>
+          <td>Created <%= ((Time.now - @movie.created_at.to_time)/1.day).round
+          %> days ago</td>
+        <%else%>
+          <%if (Time.now - @movie.created_at.to_time)>1.hour%>
+            <td>Created <%= ((Time.now - @movie.created_at.to_time)/1.hour).round
+            %> hours ago</td>
+          <%else%>
+            <td>Created <%= ((Time.now - @movie.created_at.to_time)/1.minute).round%> minutes ago</td>
+          <%end%>
+        <%end%>
+</p>
+
+<p>
+  <strong>Number of likes:</strong>
+  <%= @movie.get_likes.size.to_s %>
+</p>
+
+<p>
+  <strong>Number of hates:</strong>
+  <%= @movie.get_downvotes.size.to_s %>
+</p>
+<%if current_user.id==@movie.user_id%>
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%end%>
+<%= link_to 'Back', movies_path %>
+
+<%@id=@movie.id%>
+       <%@Number_of_likes=@movie.get_likes.size.to_s%>
+
+       <%= button_to @Number_of_likes+" likes", like_movie_path(@id),:method => :get%>
+
+       <%@Number_of_hates=@movie.get_downvotes.size.to_s%>
+
+       <%= button_to @Number_of_hates+" hates", hate_movie_path(@id),:method => :get%>
+       <br>
+
+      <%if current_user.voted_up_on? @movie%>
+        <p >You liked this movie</p>
+      <%elsif current_user.voted_down_on? @movie%>
+        <p >You hated this movie</p>
+      <%end%>
+
+
+</div>
