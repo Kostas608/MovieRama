@@ -2,7 +2,7 @@
 
 This is a rails app.
 If you want to run it locally, run the followings on the terminal:
-1. budle install
+1. bundle install
 2. rake db:create
 3. rake db:migrate
 4. rails s and you are ready!
